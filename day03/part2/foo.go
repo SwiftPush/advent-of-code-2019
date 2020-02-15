@@ -1,12 +1,12 @@
-package foo
+package main
 
 import (
-	"errors"
 	"fmt"
 	"io/ioutil"
-	"os"
 	"strconv"
 	"strings"
+
+	utils "provan.uk/SwiftPush/aoc/utils"
 )
 
 type Point struct {
@@ -42,16 +42,6 @@ func readInput(filename string) ([]Path, []Path) {
 	path1, path2 := parseLine(inputStrings[0]), parseLine(inputStrings[1])
 
 	return path1, path2
-}
-
-func parseCommandLineArguments() string {
-	args := os.Args[1:]
-	if len(args) != 1 {
-		panic(errors.New("expected 1 argument"))
-	}
-
-	filename := args[0]
-	return filename
 }
 
 func calculateAllPositionsOnPath(p []Path) map[Point]int {
@@ -112,7 +102,7 @@ func min(a, b int) int {
 }
 
 func main() {
-	filename := parseCommandLineArguments()
+	filename := utils.ParseCommandLineArguments()
 	line1, line2 := readInput(filename)
 	points1, points2 := calculateAllPositionsOnPath(line1), calculateAllPositionsOnPath(line2)
 	minimumDistance := findMinimalCrossingPoints(points1, points2)

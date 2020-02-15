@@ -5,8 +5,9 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
-	"os"
 	"strings"
+
+	utils "provan.uk/SwiftPush/aoc/utils"
 )
 
 type Object struct {
@@ -54,16 +55,6 @@ func readInput(filename string) map[string]*Object {
 	return objects
 }
 
-func parseCommandLineArguments() string {
-	args := os.Args[1:]
-	if len(args) != 1 {
-		panic(errors.New("expected 1 argument"))
-	}
-
-	filename := args[0]
-	return filename
-}
-
 type QueueItem struct {
 	name     string
 	distance int
@@ -96,7 +87,7 @@ func findSanta(objects map[string]*Object) (int, error) {
 }
 
 func main() {
-	filename := parseCommandLineArguments()
+	filename := utils.ParseCommandLineArguments()
 	objects := readInput(filename)
 	result, err := findSanta(objects)
 	if err != nil {

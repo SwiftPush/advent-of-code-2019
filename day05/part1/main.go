@@ -1,12 +1,12 @@
 package main
 
 import (
-	"errors"
 	"fmt"
 	"io/ioutil"
-	"os"
 	"strconv"
 	"strings"
+
+	utils "provan.uk/SwiftPush/aoc/utils"
 )
 
 type ParameterMode int
@@ -18,11 +18,11 @@ const (
 )
 
 const (
-	Add         = 1
-	Multiply    = 2
-	GetInput    = 3
-	Output      = 4
-	Halt        = 99
+	Add      = 1
+	Multiply = 2
+	GetInput = 3
+	Output   = 4
+	Halt     = 99
 )
 
 type Instruction struct {
@@ -45,16 +45,6 @@ func readInput(filename string) []int {
 		nums[i], _ = strconv.Atoi(inputString)
 	}
 	return nums
-}
-
-func parseCommandLineArguments() string {
-	args := os.Args[1:]
-	if len(args) != 1 {
-		panic(errors.New("expected 1 argument"))
-	}
-
-	filename := args[0]
-	return filename
 }
 
 func parseInstruction(x int) Instruction {
@@ -138,7 +128,7 @@ func process(nums []int) (int, []int) {
 }
 
 func main() {
-	filename := parseCommandLineArguments()
+	filename := utils.ParseCommandLineArguments()
 	nums := readInput(filename)
 	result, outputs := process(nums)
 	fmt.Println("result:", result, "outputs:", outputs)

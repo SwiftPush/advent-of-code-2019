@@ -1,12 +1,12 @@
 package main
 
 import (
-	"errors"
 	"fmt"
 	"io/ioutil"
-	"os"
 	"strconv"
 	"strings"
+
+	utils "provan.uk/SwiftPush/aoc/utils"
 )
 
 func readInput(filename string) []int {
@@ -24,16 +24,6 @@ func readInput(filename string) []int {
 		nums[i], _ = strconv.Atoi(inputString)
 	}
 	return nums
-}
-
-func parseCommandLineArguments() string {
-	args := os.Args[1:]
-	if len(args) != 1 {
-		panic(errors.New("expected 1 argument"))
-	}
-
-	filename := args[0]
-	return filename
 }
 
 func process(nums []int, noun, verb int) int {
@@ -73,7 +63,7 @@ func calculateNounAndVerb(nums []int, target int) (noun, verb int) {
 }
 
 func main() {
-	filename := parseCommandLineArguments()
+	filename := utils.ParseCommandLineArguments()
 	nums := readInput(filename)
 	target := 19690720
 	noun, verb := calculateNounAndVerb(nums, target)

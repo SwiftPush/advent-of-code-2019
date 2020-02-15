@@ -1,12 +1,12 @@
 package main
 
 import (
-	"errors"
 	"fmt"
 	"io/ioutil"
 	"log"
-	"os"
 	"strings"
+
+	utils "provan.uk/SwiftPush/aoc/utils"
 )
 
 type Object struct {
@@ -53,16 +53,6 @@ func readInput(filename string) map[string]*Object {
 	return objects
 }
 
-func parseCommandLineArguments() string {
-	args := os.Args[1:]
-	if len(args) != 1 {
-		panic(errors.New("expected 1 argument"))
-	}
-
-	filename := args[0]
-	return filename
-}
-
 func countOrbitsInternal(objects map[string]*Object, current string, height int) int {
 	fmt.Println("countOrbitsInternal", "current=", current, "height=", height)
 	count := 0
@@ -78,7 +68,7 @@ func countOrbits(objects map[string]*Object) int {
 }
 
 func main() {
-	filename := parseCommandLineArguments()
+	filename := utils.ParseCommandLineArguments()
 	objects := readInput(filename)
 	for name, object := range objects {
 		fmt.Println(name, object)
