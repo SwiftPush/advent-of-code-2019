@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"strings"
 
-	utils "provan.uk/SwiftPush/aoc/utils"
+	"aoc/utils"
 )
 
 func readInput(filename string) []int {
@@ -51,6 +51,7 @@ func process(nums []int) int {
 
 func main() {
 	filename := utils.ParseCommandLineArguments()
+
 	nums := readInput(filename)
 	result := process(nums)
 	fmt.Println(result)

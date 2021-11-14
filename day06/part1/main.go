@@ -6,7 +6,7 @@ import (
 	"log"
 	"strings"
 
-	utils "provan.uk/SwiftPush/aoc/utils"
+	"aoc/utils"
 )
 
 type Object struct {

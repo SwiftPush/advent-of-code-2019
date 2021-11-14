@@ -1,4 +1,4 @@
-module provan.uk/SwiftPush/aoc
+module aoc
 
 go 1.13
 

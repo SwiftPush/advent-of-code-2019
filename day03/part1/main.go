@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"strings"
 
-	utils "provan.uk/SwiftPush/aoc/utils"
+	"aoc/utils"
 )
 
 type Point struct {

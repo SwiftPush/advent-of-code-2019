@@ -1,4 +1,4 @@
-package aocutils
+package utils
 
 import (
 	"errors"
